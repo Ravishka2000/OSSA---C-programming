@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 int main()
 {
@@ -7,13 +9,12 @@ int main()
 
   if(pid == 0)
   {
-    printf("\n\nThis is Child Process");
-    printf("\nMy ID : %d",getpid());
-    printf("\nParent Process ID : %d",getppid());
+    printf("\nChild Process ID : %d",getpid());
+    printf("\nChild's Parent Process ID : %d",getppid());
   }
   else 
   {
-    printf("\nThis is Parent Process");
-    printf("\nMy ID : %d",getpid());
+    printf("\nParent Process ID : %d \n",getpid());
+    wait(NULL);
   }
 }
